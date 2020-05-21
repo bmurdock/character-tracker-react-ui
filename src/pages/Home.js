@@ -1,4 +1,5 @@
 import React, {Component as RC} from 'react';
+import Page from '../components/Page';
 
 export default class Home extends RC {
     constructor(props)
@@ -8,9 +9,9 @@ export default class Home extends RC {
     render()
     {
         return(
-            <div>
+            <Page>
                 
-            </div>
+            </Page>
         )
     }
 }

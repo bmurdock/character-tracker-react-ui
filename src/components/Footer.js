@@ -9,7 +9,7 @@ export default class Footer extends RC {
     {
         return(
             <footer className="main-footer">
-                Created By: Brian Murdock 2020
+                <p>Created By: Brian Murdock 2020</p>
             </footer>
         )
     }
