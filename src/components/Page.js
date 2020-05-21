@@ -12,6 +12,7 @@ export default class Page extends RC {
         return(
         <section className="page-wrapper">
             <Header />
+            {this.props.banner}
             <main className="content">
                 {this.props.children}
             </main>

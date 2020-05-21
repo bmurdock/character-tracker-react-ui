@@ -1,21 +1,34 @@
 import React, {Component as RC} from 'react';
 import Page from '../components/Page';
+import Banner from '../components/Banner';
 
 export default class Login extends RC {
     constructor(props)
     {
         super(props);
+        this.state = {
+            banner: ''
+        };
+    }
+    componentDidMount()
+    {
+        this.setState({
+            banner: <Banner
+                        image='https://media.dnd.wizards.com/styles/second_hubpage_banner/public/images/head-banner/03_NEW-TO-DnD_Races_Heroes_Hero_140725.jpg'
+                        title="This tool will help you:"
+                        content={
+                        <ul>
+                            <li>Keep track of your Dungeons &amp; Dragons characters</li>
+                            <li>Make friends with other players.</li>
+                        </ul>
+                        }
+                    />
+        });
     }
     render()
     {
         return(
-            <Page>
-                <p>This tool will help you:
-                    <ul>
-                        <li>Keep track of your Dungeons &amp; Dragons characters</li>
-                        <li>Make friends with other players.</li>
-                    </ul>
-                </p>
+            <Page banner={this.state.banner}>
                 <h3>Sign Up to Get Started!</h3>
                 <form>
                     <label>Username</label>
