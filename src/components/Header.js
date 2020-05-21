@@ -1,6 +1,6 @@
 import React, {Component as RC} from 'react';
 import Logo from './Logo';
-import Navigation from './Navigation';
+import Navigation from './Navigation/Navigation';
 import LoginButton from './LoginButton';
 
 export class Simple extends RC {

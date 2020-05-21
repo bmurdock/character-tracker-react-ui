@@ -8,12 +8,20 @@ export default class Banner extends RC {
     }
     render()
     {
-        let bannerStyle;
+        let bannerStyle = {};
         if (this.props.image)
         {
             bannerStyle = {
                 backgroundImage: `url(${this.props.image})`,
             };
+        }
+        if (this.props.color)
+        {
+            bannerStyle.color = this.props.color;
+        }
+        else 
+        {
+            bannerStyle.color = '#fff';
         }
         return(
             <section className="banner" style={bannerStyle}>

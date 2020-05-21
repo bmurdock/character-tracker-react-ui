@@ -1,0 +1,28 @@
+.main-nav {
+display: flex;
+flex-flow: row;
+padding: 0.5em 0;
+}
+.nav-list {
+    display: flex;
+    flex-flow: row;
+    list-style-type: none;
+    flex-grow: 1;
+    justify-content: space-evenly;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list > li {
+    line-height: 1.5em;
+    border-bottom: 2px solid #555;
+}
+.nav-list > li:hover {
+    color: #900;
+    border-color: #900;
+}
+
+.nav-list > li a {
+    color: inherit;
+    text-decoration: none;
+}

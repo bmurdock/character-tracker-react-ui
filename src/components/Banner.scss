@@ -3,10 +3,17 @@
     width: 100vw;
     height: 400px;
     flex-flow: column;
+    background-position: center;
+    background-size: cover;
+
+    padding: 1em;
 }
 
 .banner-title {
-    
+    font-size: 2em;
+    font-weight: 900;
+    font-family: "Open Sans", sans-serif;
+    text-shadow: 3px 3px 2px #000;
 }
 
 .banner-content {

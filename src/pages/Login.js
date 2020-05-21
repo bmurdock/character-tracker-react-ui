@@ -14,7 +14,7 @@ export default class Login extends RC {
     {
         this.setState({
             banner: <Banner
-                        image='https://media.dnd.wizards.com/styles/second_hubpage_banner/public/images/head-banner/03_NEW-TO-DnD_Races_Heroes_Hero_140725.jpg'
+                        image='https://background-tiles.com/overview/red/patterns/large/1056.png'
                         title="This tool will help you:"
                         content={
                         <ul>
