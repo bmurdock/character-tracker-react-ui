@@ -1,25 +1,14 @@
 export default [
     {
-        label: 'Milk'
+        label: 'Home',
+        route: '/home',
     },
     {
-        label: 'Eggs'
+        label: 'Create Character',
+        route: '/create-character',
     },
     {
-        label: 'Cereal',
-        children: [
-            {
-                label: 'Cheerios',
-            },
-            {
-                label: 'Fruit Loops',
-            },
-            {
-                label: 'Honey Comb',
-            }
-        ]
-    },
-    {
-        label: 'Pasta',
+        label: 'View Profile',
+        route: '/view-profile',
     }
 ]

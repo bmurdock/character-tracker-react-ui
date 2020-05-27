@@ -1,4 +1,5 @@
 import React, {Component as RC} from 'react';
+import Page from '../components/Page';
 
 export default class ViewProfile extends RC {
     constructor(props)
@@ -8,9 +9,9 @@ export default class ViewProfile extends RC {
     render()
     {
         return(
-            <div>
-                
-            </div>
+            <Page>
+
+            </Page>
         )
     }
 }

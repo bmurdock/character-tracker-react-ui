@@ -1,4 +1,5 @@
 import React, {Component as RC} from 'react';
+import {Link} from 'react-router-dom';
 import './Navigation.css';
 import navStructure from './navStructure';
 
@@ -8,60 +9,22 @@ class NavList extends RC{
         super(props);
         console.log('constructor props: ', props);
         this.state = {
-            listStyle: {
-                display: 'flex',
-            },
             navItems: [],
-        }
-    }
-
-    shouldComponentUpdate(prevProps, prevState)
-    {
-        console.log('deciding whether to update');
-        return true;
-    }
-    componentDidUpdate(prevProps)
-    {
-        console.log('updating: ', this.props);
-        if (this.props.show !== prevProps.show)
-        {
-            console.log('visibility should change');
-            const listStyle = {
-                display: (this.props.show) ? 'flex' : 'none',
-            };
-            this.setState({
-                listStyle,
-            });
         }
     }
 
     componentDidMount()
     {
-        let listStyle;
-        if (this.props.type === 'main-menu')
-        {
-            listStyle = {
-                display: 'flex',
-            }
-        }
-        else
-        {
-            listStyle = {
-                display: 'none',
-            }
-        }
-
         this.setState({
             navItems: this.props.structure.map((item, i) =>
             {
                 return <NavItem key={`nav_${item.label.toLowerCase()}`} {...item} />
             }),
-            listStyle,
         });
     }
     render(){
         return (
-            <ul className={`nav-list ${this.props.type || 'sub-menu'} ${this.props.visibilityClass || ''}`} style={this.state.listStyle}>
+            <ul className={`nav-list ${this.props.type || 'sub-menu'} ${this.props.visibilityClass || 'menu-visible'}`}>
                 {this.state.navItems}
                 {this.props.show}
             </ul>
@@ -79,17 +42,6 @@ class NavItem extends RC {
         }
     }
 
-    componentDidMount()
-    {
-        // determine if this nav item has children
-        // if so, it should get a sub menu
-        if (this.props.children)
-        {
-            this.setState({
-                submenu: <NavList structure={this.props.children} visibilityClass={this.state.visibilityClass} />
-            })
-        }   
-    }
     showSub = () =>
     {
         if (this.props.children)
@@ -113,10 +65,32 @@ class NavItem extends RC {
 
     }
     render(){
+
+        let submenu = null;
+        let item;
+
+        // determine if this nav item has children
+        // if so, it should get a sub menu
+        if (this.props.children)
+        {
+            submenu = <NavList structure={this.props.children} visibilityClass={this.state.visibilityClass} />;
+        }
+        
+        if (this.props.route)
+        {
+            item = <Link className='nav-item' to={this.props.route}>
+                {this.props.label}
+            </Link>
+        }
+        else
+        {
+            item = <span className='nav-item'>{this.props.label}</span>
+        }
+
         return (
             <li onMouseEnter={this.showSub} onMouseLeave={this.hideSub}>
-                {this.props.label}
-                {this.state.submenu}
+                {item}
+                {submenu}
             </li>
         )
     }

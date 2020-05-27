@@ -15,11 +15,19 @@ $darkerRed: rgb(53, 18, 18);
   display: flex;
   flex-flow: column;
   height: 100vh;
+  margin-top: 60px;
 }
 .main-header {
   display: flex;
   flex-flow: row;
   border-bottom: 3px solid $darkerRed;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+}
+.sub-menu {
 }
 
 .content {
