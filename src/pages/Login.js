@@ -1,6 +1,8 @@
 import React, {Component as RC} from 'react';
 import Page from '../components/Page';
 import Banner from '../components/Banner';
+import {LoggedInContext} from '../Context';
+import {Redirect} from 'react-router-dom';
 
 export default class Login extends RC {
     constructor(props)
@@ -27,6 +29,13 @@ export default class Login extends RC {
     }
     render()
     {
+        let loggedIn = this.context;
+        if (loggedIn)
+        {
+            return (
+                <Redirect to="/" />
+            )
+        }
         return(
             <Page banner={this.state.banner}>
                 <h3>Sign Up to Get Started!</h3>
@@ -65,3 +74,5 @@ Fighters learn the basics of all combat styles. Every fighter can swing an axe, 
         )
     }
 }
+
+Login.contextType = LoggedInContext;

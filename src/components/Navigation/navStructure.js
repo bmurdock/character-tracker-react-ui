@@ -1,7 +1,7 @@
 export default [
     {
         label: 'Home',
-        route: '/home',
+        route: '/',
     },
     {
         label: 'Create Character',
