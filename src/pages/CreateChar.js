@@ -7,6 +7,7 @@ export default class CreateChar extends RC {
     constructor(props)
     {
         super(props);
+        // eventually we will manage the form values with state
         this.state = {
             name: '',
             characterClass: '',
@@ -16,6 +17,8 @@ export default class CreateChar extends RC {
             raceList: [],
         }
     }
+    // this function simply takes an object with _id and name keys and
+    // returns an option element
     optionMapper = (item) =>
     {
         return <option key={`option_${item._id}`} value={item._id}>{item.name}</option>
@@ -26,6 +29,7 @@ export default class CreateChar extends RC {
         event.preventDefault();
         // do more stuff
     }
+    // function populates our state with lists (for our dropdowns)
     makeLists = () =>
     {
         console.log('this.context: ', this.context);
@@ -52,12 +56,12 @@ export default class CreateChar extends RC {
                   <label>Character Class: </label>
                   <select name="characterClass">
                     <option>Choose a Class</option>
-         
+                    {this.state.classList}
                   </select>
                   <label>Character Race: </label>
                   <select name="race">
                     <option>Choose a Race</option>
-                    
+                    {this.state.raceList}
                   </select>
                 </FormRow>
         
