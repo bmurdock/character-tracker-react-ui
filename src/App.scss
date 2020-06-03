@@ -1,6 +1,13 @@
 $myRed: #990000;
 $darkerRed: rgb(53, 18, 18);
-
+// All forms in general should share these styles:
+form {
+  display: flex;
+  flex-flow: column;
+}
+.player-name {
+  color: $myRed;
+}
 .logo {
   font-weight: 900;
   font-size: 3em;
@@ -33,6 +40,10 @@ $darkerRed: rgb(53, 18, 18);
 .content {
   flex: 1;
   padding: 1em;
+}
+.constrain {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .main-footer {

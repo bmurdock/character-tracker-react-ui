@@ -23,6 +23,8 @@ class NavList extends RC{
         });
     }
     render(){
+
+        
         return (
             <ul className={`nav-list ${this.props.type || 'sub-menu'} ${this.props.visibilityClass || 'menu-visible'}`}>
                 {this.state.navItems}

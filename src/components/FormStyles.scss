@@ -1,0 +1,20 @@
+// var to hold max number of form elements per row
+// this only works if using SCSS
+$MAX: 4;
+.form-row {
+    display: flex;
+    flex-flow: row wrap;
+}
+// all DIRECT children of .form-row
+.form-row > * {
+    flex-grow: 1;
+    // we could determine the MAX number of form elements per row
+    max-width: calc(100% / $MAX);
+}
+input[type=text] {
+    border-width: 0 0 3px 0;
+    border-color: black;
+    border-style: solid;
+    margin-right: 1em;
+
+}
