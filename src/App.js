@@ -95,10 +95,7 @@ class App extends Component {
             <Router>
                 <Switch>
                     <MergedContext.Provider
-                        value={{
-                            classes: this.state.classes,
-                            races: this.state.races,
-                        }}
+                        value={this.state}
                     >
                         <AppNameContext.Provider value={this.state.appName}>
                             <LoggedInContext.Provider

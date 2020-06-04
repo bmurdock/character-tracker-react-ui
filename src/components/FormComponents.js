@@ -6,7 +6,26 @@ export function TextField(props)
     return (
         <div className="text-field">
             <label htmlFor={props.name}>{props.label}</label>
-            <input type="text" name={props.name} />
+            <input
+                type="text" name={props.name}
+                value={props.value || ''}
+                onChange={props.changeHandler}
+            />
+        </div>
+    )
+}
+export function SelectField(props)
+{
+    return (
+        <div className="select-field">
+            <label htmlFor={props.name}>{props.label}</label>
+            <select
+                name={props.name}
+                onChange={props.changeHandler}
+            >
+                <option>{' '}</option>
+                {props.options}
+            </select>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React, {Component as RC} from 'react';
 import Page from '../components/Page';
-import {LoggedInUserContext} from '../Context';
+import {MergedContext} from '../Context';
 import './Home.scss';
 
 export default class Home extends RC {
@@ -41,7 +41,7 @@ export default class Home extends RC {
     }
     render()
     {
-        let user = this.context;
+        let user = this.context.loggedInUser;
         return(
             <Page>
                 <section className="profile-page constrain">
@@ -59,4 +59,4 @@ export default class Home extends RC {
         )
     }
 }
-Home.contextType = LoggedInUserContext;
+Home.contextType = MergedContext;

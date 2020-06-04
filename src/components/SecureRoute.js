@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
-import {LoggedInContext} from '../Context';
+import {MergedContext} from '../Context';
 
 export default class SecureRoute extends React.Component {
     render()
@@ -16,7 +16,7 @@ export default class SecureRoute extends React.Component {
             path: 'some val',
         }
         */
-        let loggedIn = this.context;
+        let loggedIn = this.context.loggedIn;
         if (!loggedIn)
         {
             component = <Redirect to="/login" />
@@ -29,4 +29,4 @@ export default class SecureRoute extends React.Component {
     }
 }
 
-SecureRoute.contextType = LoggedInContext;
+SecureRoute.contextType = MergedContext;
