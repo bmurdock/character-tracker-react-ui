@@ -50,6 +50,7 @@ export default class CreateChar extends RC {
             method: 'POST',
             body: JSON.stringify(submitData),
         };
+        // send data to api
         const route = 'http://localhost:3020/api/characters'
         fetch(route, fetchOptions)
         .then((response) =>

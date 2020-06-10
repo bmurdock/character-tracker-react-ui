@@ -18,6 +18,8 @@ export default class Home extends RC {
         fetch(route)
         .then((response) =>
         {
+            // waits for the entire response stream
+            // returns parsed json from the stream
             return response.json();
         })
         .then((data) =>
@@ -37,6 +39,7 @@ export default class Home extends RC {
         });
     }
     componentDidMount() {
+        console.log('my context: ', this.context);
         this.fetchCharacters();
     }
     render()

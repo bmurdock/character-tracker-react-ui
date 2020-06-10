@@ -29,9 +29,12 @@ padding: 0.5em 0;
     padding-bottom: 0.5em;
     line-height: 2em;
 }
-
 .main-menu > li {
-    min-width: 200px;
+    text-align: center;
+}
+.main-menu > li > * {
+    min-width: 150px;
+    display: inline-block;
 }
 .main-menu > li > .nav-item {
     border-bottom: 3px solid #555;
@@ -39,4 +42,43 @@ padding: 0.5em 0;
 
 .main-menu > li > .nav-item:hover {
     border-color: #900;
+}
+.mobile-nav {
+    position: fixed;
+    color: white;
+    top: 0;
+    right: -450px;
+    width: 450px;
+    max-width: 95vw;
+    height: 100%;
+    background: rgb(153,0,0);
+    background: linear-gradient(160deg, rgba(153,0,0,1) 0%, rgba(102,0,0,1) 100%);
+    z-index: 100;
+    font-size: 36px;
+    transition: transform 500ms;
+}
+.menu-open {
+    transform: translateX(-450px);
+    transition: transform 500ms;
+}
+.mobile-nav a {
+    text-decoration: none;
+    color: inherit;
+}
+.mobile-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.mobile-nav li {
+    padding: .5em;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-image-source: linear-gradient(to left, #00C853, #B2FF59);
+    border-image-slice: 1;
+}
+.mobile-nav-header {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
 }

@@ -6,3 +6,4 @@ export const AppNameContext = React.createContext('MyApp');
 export const ClassesContext = React.createContext([]);
 export const RacesContext = React.createContext([]);
 export const MergedContext = React.createContext({});
+export const MenuContext = React.createContext('');

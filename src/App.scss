@@ -33,6 +33,7 @@ form {
   left: 0;
   right: 0;
   background: #fff;
+  justify-content: space-between;
 }
 .sub-menu {
 }
@@ -50,4 +51,23 @@ form {
   background: #000;
   text-align: center;
   color: #fff;
+}
+.mobile {
+  display: none;
+}
+// if the screen gets smaller than 800px, these rules take effect
+@media (max-width: 800px)
+{
+  body {
+    font-size: 20px;
+  }
+  .desktop {
+    display: none !important;
+  }
+  .logo {
+    font-size: 1.5em;
+  }
+  .mobile {
+    display: block;
+  }
 }
