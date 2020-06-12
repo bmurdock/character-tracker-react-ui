@@ -1,4 +1,5 @@
 import React, {Component as RC, useContext, useState, useEffect} from 'react';
+import config from '../config';
 import Page from '../components/Page';
 import {FormRow, TextField, SelectField} from '../components/FormComponents';
 import {MergedContext} from '../Context';
@@ -51,7 +52,7 @@ export default class CreateChar extends RC {
             body: JSON.stringify(submitData),
         };
         // send data to api
-        const route = 'http://localhost:3020/api/characters'
+        const route = `${config.apiPath}/api/characters`
         fetch(route, fetchOptions)
         .then((response) =>
         {
@@ -102,13 +103,18 @@ export default class CreateChar extends RC {
             player: this.context.loggedInUser._id,
         })
     }
+    // whenever a form field changes, look up the name property
+    // in state and change that value to match form field value
     changeHandler = (event) =>
     {
         const fieldName = event.target.getAttribute('name');
         const stateObj = {};
         stateObj[fieldName] = event.target.value;
+        // this is only necessary if you are displaying feedback to the user
         stateObj.feedbackMessage = '';
         stateObj.feedbackType = '';
+
+
         this.setState(stateObj);
     }
   

@@ -6,6 +6,7 @@ import {
     Link,
     Redirect,
 } from 'react-router-dom';
+import config from './config';
 import SecureRoute from './components/SecureRoute';
 import './App.scss';
 import Login from './pages/Login';
@@ -18,8 +19,6 @@ import {
     LoggedInContext,
     LoggedInUserContext,
     AppNameContext,
-    ClassesContext,
-    RacesContext,
     MergedContext,
 } from './Context';
 
@@ -41,7 +40,7 @@ class App extends Component {
             return null;
         }
 
-        let route = `http://localhost:3020/api/${model}`;
+        let route = `${config.apiPath}/api/${model}`;
         fetch(route)
             .then((response) => {
                 return response.json();
@@ -60,24 +59,43 @@ class App extends Component {
             });
     };
     logmein = (event) => {
-        console.log('logging in');
         event.preventDefault();
-        this.setState({
-            loggedIn: true,
-            loggedInUser: {
-                friends: [
-                    '5ec5ce5221a43fd18b39a76a',
-                    '5ec5cf8a7cbb90d1d19a68d3',
-                ],
-                _id: '5ec5cf7e7cbb90d1d19a68d2',
-                username: 'user2',
-                password: 'nope',
-                displayName: 'user2',
-                email: 'user2@whatever.com',
-                createdAt: '2020-05-21T00:46:54.982Z',
-                updatedAt: '2020-05-21T00:56:33.615Z',
+        const [username, password, submit] = [].slice.call(event.target.elements);
+        const route = `${config.apiPath}/login`;
+        const body ={username: username.value, password: password.value};
+        const fetchOptions = {
+            headers: {
+                'Content-Type': 'application/json',
             },
-        });
+            method: 'POST',
+            body: JSON.stringify(body)
+        }
+        fetch(route, fetchOptions)
+        .then((response) =>
+        {
+            if (response.status !== 200)
+            {
+                return {};
+            }
+            return response.json();
+        })
+        .then((data) =>
+        {
+            if (Object.keys(data).length)
+            {
+                this.setState({
+                    loggedIn: true,
+                    loggedInUser: data.user,
+                })
+            }
+            // need to tell the user they entered wrong username/password
+            // but i'm too lazy at the moment
+
+        })
+        .catch((err) =>
+        {
+            console.log('Error logging in...: ', err);
+        })
     };
     logmeout = () => {
         this.setState({

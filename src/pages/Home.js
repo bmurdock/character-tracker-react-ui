@@ -1,4 +1,5 @@
 import React, {Component as RC} from 'react';
+import config from '../config';
 import Page from '../components/Page';
 import {MergedContext} from '../Context';
 import './Home.scss';
@@ -14,7 +15,7 @@ export default class Home extends RC {
     }
     fetchCharacters = () =>
     {
-        let route = 'http://localhost:3020/api/characters';
+        let route = `${config.apiPath}/api/characters`;
         fetch(route)
         .then((response) =>
         {

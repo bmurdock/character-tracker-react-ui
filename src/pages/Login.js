@@ -11,7 +11,23 @@ export default class Login extends RC {
         super(props);
         this.state = {
             banner: '',
+            username: '',
+            password: ''
         };
+    }
+    // whenever a form field changes, look up the name property
+    // in state and change that value to match form field value
+    changeHandler = (event) =>
+    {
+        console.log('changing!')
+        const fieldName = event.target.getAttribute('name');
+        const stateObj = {};
+        stateObj[fieldName] = event.target.value;
+        // this is only necessary if you are displaying feedback to the user
+        stateObj.feedbackMessage = '';
+        stateObj.feedbackType = '';
+        
+        this.setState(stateObj);
     }
     componentDidMount() {
         this.setState({
@@ -49,17 +65,18 @@ export default class Login extends RC {
 
 
                 <h3>Sign Up to Get Started!</h3>
-                <form className="login-form">
+                <form className="login-form" onSubmit={this.props.login}>
                     <FormRow>
-                        <TextField label="Username" name='username' />
+                        <TextField label="Username" name='username' changeHandler={this.changeHandler} value={this.state.username} />
                     </FormRow>
+
                     <FormRow>
                         <label>Password</label>
-                        <input type='password' name='password' />
+                        <input type='password' name='password' value={this.state.password} onChange={this.changeHandler} />
                     </FormRow>
+                    <input type="submit" defaultValue="Login" />
                 </form>
 
-                <button onClick={this.props.login}>Login</button>
             </Page>
         );
     }
