@@ -11,15 +11,4 @@ export default [
         label: 'View Profile',
         route: '/view-profile',
     },
-    {
-        label: 'Test',
-        children: [
-            {
-                label: 'First',
-            },
-            {
-                label: 'Second',
-            },
-        ],
-    },
 ]

@@ -1,4 +1,5 @@
 import React, {Component as RC} from 'react';
+import {Link} from 'react-router-dom';
 import config from '../config';
 import Page from '../components/Page';
 import {MergedContext} from '../Context';
@@ -12,6 +13,28 @@ export default class Home extends RC {
             characers: [],
             charList: null,
         };
+    }
+    deleteMe = (event) =>
+    {
+        const character = event.target.getAttribute('character');
+        let route = `${config.apiPath}/api/characters/${character}`;
+        const fetchOptions = {
+            method: 'DELETE',
+        };
+        fetch(route, fetchOptions)
+        .then((response) =>
+        {
+            return response.json();
+        })
+        .then((data) =>
+        {
+            console.log('should have deleted: ', data);
+            this.fetchCharacters();
+        })
+        .catch((err) =>
+        {
+            console.log('Error deleting character: ', err);
+        })
     }
     fetchCharacters = () =>
     {
@@ -28,9 +51,14 @@ export default class Home extends RC {
             // do somethign with the data
             this.setState({
                 characters: data,
-                charList: data.map((character, i) =>
+                charList: data.map((character) =>
                 {   
-                    return <li key={`char_${i}`}>{character.name}</li>
+                    return (
+                    <li key={`char_${character._id}`}>
+                        <Link to={{pathname: '/create-character', charId: character._id}}>{character.name}</Link>
+                        <button onClick={this.deleteMe} character={character._id}>x</button>
+                    </li>
+                    )
                 }),
             });
         })

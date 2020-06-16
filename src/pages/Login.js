@@ -2,9 +2,11 @@ import React, { Component as RC } from 'react';
 import Page from '../components/Page';
 import Banner from '../components/Banner';
 import { LoggedInContext } from '../Context';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { TextField, FormRow } from '../components/FormComponents';
 import { Tabs, Tab, TabPanel } from '../components/Tabs/Tabs';
+
+var myId = 2392;
 
 export default class Login extends RC {
     constructor(props) {
@@ -53,14 +55,17 @@ export default class Login extends RC {
         if (loggedIn) {
             return <Redirect to='/' />;
         }
+        console.log(this.props.location)
         return (
             <Page banner={this.state.banner}>
+                <Link to={{pathName: "/login", catId: {myId}, }}>Click This</Link>
+
                 <Tabs tabs={[
                     <Tab label="Sign Up" index={0} />,
                 <Tab label="Sign In" index={1} />
                 ]} >
-                    <TabPanel>Test 1</TabPanel>
-                    <TabPanel>Test 2</TabPanel>
+                    <TabPanel index={0}>Test 1</TabPanel>
+                    <TabPanel index={1}>Test 2</TabPanel>
                 </Tabs>
 
 

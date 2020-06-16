@@ -22,6 +22,7 @@ export function SelectField(props)
             <select
                 name={props.name}
                 onChange={props.changeHandler}
+                value={props.value}
             >
                 <option>{' '}</option>
                 {props.options}
